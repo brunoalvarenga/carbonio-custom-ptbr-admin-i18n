@@ -10,8 +10,9 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 systemctl disable --now "$MODULE_ID-guard.timer" >/dev/null 2>&1 || true
+systemctl disable --now "$MODULE_ID.path" >/dev/null 2>&1 || true
 systemctl disable "$MODULE_ID.service" >/dev/null 2>&1 || true
-rm -f "/etc/systemd/system/$MODULE_ID.service" "/etc/systemd/system/$MODULE_ID-guard.timer"
+rm -f "/etc/systemd/system/$MODULE_ID.service" "/etc/systemd/system/$MODULE_ID-guard.timer" "/etc/systemd/system/$MODULE_ID.path"
 systemctl daemon-reload
 
 latest=""

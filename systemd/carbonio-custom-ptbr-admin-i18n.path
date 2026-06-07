@@ -1,0 +1,12 @@
+[Unit]
+Description=Watch Carbonio Admin i18n files and reapply PT-BR translation
+
+[Path]
+PathChanged=/opt/zextras/admin/iris/i18n
+PathChanged=/opt/zextras/admin/iris/carbonio-admin-ui/i18n
+PathChanged=/opt/zextras/admin/iris/src/i18n
+PathChanged=/opt/zextras/admin/iris/carbonio-admin-ui/src/i18n
+Unit=carbonio-custom-ptbr-admin-i18n.service
+
+[Install]
+WantedBy=multi-user.target

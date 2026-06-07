@@ -20,11 +20,13 @@ chmod 0755 "$INSTALL_DIR/scripts/"*.sh "$INSTALL_DIR/scripts/"*.py 2>/dev/null |
 
 install -m 0644 "$SRC_DIR/systemd/$MODULE_ID.service" "/etc/systemd/system/$MODULE_ID.service"
 install -m 0644 "$SRC_DIR/systemd/$MODULE_ID-guard.timer" "/etc/systemd/system/$MODULE_ID-guard.timer"
+install -m 0644 "$SRC_DIR/systemd/$MODULE_ID.path" "/etc/systemd/system/$MODULE_ID.path"
 
 systemctl daemon-reload
 bash "$INSTALL_DIR/repair.sh"
 systemctl enable "$MODULE_ID.service" >/dev/null 2>&1 || true
 systemctl enable --now "$MODULE_ID-guard.timer" >/dev/null 2>&1 || true
+systemctl enable --now "$MODULE_ID.path" >/dev/null 2>&1 || true
 
 if [ -x /opt/zextras/common/sbin/nginx ]; then
   /opt/zextras/common/sbin/nginx -t -c /opt/zextras/conf/nginx.conf

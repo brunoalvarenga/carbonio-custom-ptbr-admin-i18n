@@ -1,16 +1,17 @@
 # Relatorio De Testes
 
 Modulo: Carbonio Custom PT-BR Admin I18n
-Versao: 0.1.2
+Versao: 0.1.3
 Data: 2026-06-07
 
 ## Conclusao
 
 HOMOLOGADO PARA USO DO MODULO DE TRADUCAO PT-BR DO ADMIN CONSOLE.
 
-O modulo foi instalado no servidor `31.220.81.200`, aplicou `pt.json` nos
-caminhos reais do Carbonio Admin, ativou timer de reaplicacao e foi validado no
-navegador com usuario administrador em `pt_BR`.
+O modulo foi instalado no servidor `31.220.81.200`, aplicou `pt.json` e aliases
+nos caminhos reais do Carbonio Admin, ativou timer/watcher de reaplicacao,
+corrigiu a rota Nginx de i18n dos apps nativos e foi validado no navegador com
+usuario administrador em `pt_BR`.
 
 Escopo auditado: traducao nativa do Carbonio Admin Console. Itens do roteiro
 original ligados a Webmail, tradutor visual, traducao de conteudo de mensagens,
@@ -26,15 +27,31 @@ HTML, assinaturas e permissoes de uma tela propria foram classificados como
 - `python3 -m py_compile scripts/generate-ptbr.py`: passou.
 - ZIP final em `build/xcarbonio`: sem `.git`, caches, ZIP antigo ou tarball
   embutido.
+- SHA256 do pacote final registrado na release GitHub e no resumo de entrega.
 
 ## Validacoes No Servidor
 
-- Versao instalada: `0.1.2`.
+- Versao instalada: `0.1.3`.
 - Timer `carbonio-custom-ptbr-admin-i18n-guard.timer`: `enabled/active`.
+- Watcher `carbonio-custom-ptbr-admin-i18n.path`: `enabled/active`.
 - `nginx -t`: aprovado.
 - `/var/lib/carbonio-custom-ptbr-admin-i18n/status.json`: JSON valido.
 - `/static/iris/i18n/pt.json`: `200`.
 - `/static/iris/carbonio-admin-ui/i18n/pt.json`: `200`.
+- `/carbonioAdmin/src/i18n/pt.json`: `200` com `application/json`.
+- Simulacao de overwrite para `{}` em `carbonio-admin-ui/i18n/pt.json`: watcher
+  restaurou automaticamente para `2276` chaves.
+
+## Bugs Corrigidos
+
+- Empacotamento corrigido para gerar ZIP em `build/xcarbonio`.
+- Aliases `pt_BR.json` e `pt-BR.json` adicionados aos mesmos destinos de
+  `pt.json`.
+- Repair tornado idempotente por hash para permitir watcher sem loop.
+- Adicionado `systemd.path` para reaplicar imediatamente quando o bundle recriar
+  arquivos `i18n`.
+- Adicionada location Nginx para `/carbonioAdmin/src/i18n/`, evitando retorno
+  HTML onde o i18next espera JSON.
 
 ## Validacoes Web
 
@@ -44,14 +61,20 @@ Rotas validadas:
 
 - `/carbonioAdmin/`
 - `/carbonioAdmin/manage/domains`
+- `/carbonioAdmin/manage/domains/global/accounts`
 - `/carbonioAdmin/services/custom-activesync`
 
 Resultado Playwright:
 
-- Sem respostas HTTP ruins no escopo `carbonioAdmin/static/iris`.
-- Sem erros de console.
-- Textos PT-BR visiveis em Home, Dominios e ActiveSync.
+- Sem respostas HTTP ruins no escopo auditado.
+- Sem erros reais de console; ruido conhecido de SOAP `422` foi registrado como
+  nao relacionado ao i18n.
+- Textos PT-BR visiveis em Home, Dominios, Accounts e ActiveSync.
 - Amostras criticas:
+  - `Dashboard` -> `Painel`.
+  - `Last access` -> `Último acesso`.
+  - `Quick Access to` -> `Acesso rápido a`.
+  - `Domain Name` -> `Nome do domínio`.
   - `Create Account Wizard` -> `Assistente de criação de conta`.
   - `Surname` -> `Sobrenome`.
   - `Password` -> `Senha`.
@@ -60,7 +83,7 @@ Resultado Playwright:
 
 Evidencias:
 
-- `build/ptbr-i18n-web-audit-20260607T080912-final/`
+- `build/ptbr-i18n-web-audit-20260607T1139-final/`
 
 ## Observacoes
 
@@ -72,3 +95,5 @@ Evidencias:
   preservados.
 - O modulo nao fornece UI propria nem API propria; por isso nao ha acao
   administrativa nova para usuario comum, delegado ou limitado executar.
+- O modulo altera arquivos de traducao e patch controlado de Nginx, sempre com
+  backup em `/var/backups/carbonio-custom-ptbr-admin-i18n`.

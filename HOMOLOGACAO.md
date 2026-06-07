@@ -1,11 +1,27 @@
 # Homologacao PT-BR Admin I18n
 
 Data: 2026-06-07
-Versao: 0.1.0
+Versao: 0.1.2
 
 ## Status
 
 HOMOLOGADO PARA USO DO MODULO DE TRADUCAO PT-BR DO ADMIN CONSOLE.
+
+## Escopo Homologado
+
+- Carbonio Admin Console e modulos customizados carregados pelo Admin UI.
+- Traducao nativa via arquivos `i18next`.
+- Reaplicacao automatica por timer systemd apos atualizacoes do Carbonio.
+- Sem tela propria, sem API propria e sem dependencia de comando manual para uso
+  normal apos instalado.
+
+## Fora Do Escopo
+
+- Webmail, calendario, contatos e cliente final.
+- Tradutor visual sobreposto a tela.
+- Traducao de conteudo de mensagens, HTML, assinaturas ou respostas de e-mail.
+- Testes de permissao de usuario comum em uma UI propria, pois o modulo nao
+  expoe operacoes administrativas pela interface.
 
 ## Acesso
 
@@ -27,11 +43,13 @@ zimbraLocale: pt_BR
 - Endpoints de traducao retornando `200`.
 - Admin Console renderizando textos em PT-BR.
 - Evidencias web geradas por Playwright.
+- Auditoria do roteiro de traducao Admin/Webmail classificada como parcialmente
+  nao aplicavel ao modulo atual, por diferenca de escopo.
 
 ## Evidencias
 
 - Prints e resultado web: `build/ptbr-i18n-web-audit-20260607T080912-final/`
-- Pacote: `build/xcarbonio/carbonio-custom-ptbr-admin-i18n-0.1.0.zip`
+- Pacote: `build/xcarbonio/carbonio-custom-ptbr-admin-i18n-0.1.2.zip`
 
 ## Pendencias
 

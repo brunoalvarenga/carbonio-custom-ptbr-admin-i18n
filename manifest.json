@@ -1,7 +1,7 @@
 {
   "id": "carbonio-custom-ptbr-admin-i18n",
-  "version": "0.1.0",
-  "title": "PT-BR Admin Console Translation",
+  "version": "0.1.2",
+  "title": "Tradução PT-BR do Console Admin",
   "status": "functional",
   "type": "i18n",
   "targets": [

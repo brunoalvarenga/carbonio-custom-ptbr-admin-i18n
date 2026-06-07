@@ -1,7 +1,7 @@
 # Relatorio De Testes
 
 Modulo: Carbonio Custom PT-BR Admin I18n
-Versao: 0.1.0
+Versao: 0.1.2
 Data: 2026-06-07
 
 ## Conclusao
@@ -12,6 +12,11 @@ O modulo foi instalado no servidor `31.220.81.200`, aplicou `pt.json` nos
 caminhos reais do Carbonio Admin, ativou timer de reaplicacao e foi validado no
 navegador com usuario administrador em `pt_BR`.
 
+Escopo auditado: traducao nativa do Carbonio Admin Console. Itens do roteiro
+original ligados a Webmail, tradutor visual, traducao de conteudo de mensagens,
+HTML, assinaturas e permissoes de uma tela propria foram classificados como
+`NAO APLICAVEL` para este modulo.
+
 ## Validacoes Locais
 
 - `python3 scripts/generate-ptbr.py`: extraiu `1834` chaves do Admin Console.
@@ -19,11 +24,12 @@ navegador com usuario administrador em `pt_BR`.
 - `bash scripts/smoke-test.sh`: passou.
 - `bash -n install.sh repair.sh uninstall.sh scripts/package-release.sh`: passou.
 - `python3 -m py_compile scripts/generate-ptbr.py`: passou.
-- ZIP final: sem `.git`, caches, ZIP antigo ou tarball embutido.
+- ZIP final em `build/xcarbonio`: sem `.git`, caches, ZIP antigo ou tarball
+  embutido.
 
 ## Validacoes No Servidor
 
-- Versao instalada: `0.1.0`.
+- Versao instalada: `0.1.2`.
 - Timer `carbonio-custom-ptbr-admin-i18n-guard.timer`: `enabled/active`.
 - `nginx -t`: aprovado.
 - `/var/lib/carbonio-custom-ptbr-admin-i18n/status.json`: JSON valido.
@@ -64,3 +70,5 @@ Evidencias:
   PT-BR, a conta ou COS precisa usar locale portugues.
 - Termos tecnicos como COS, MTA, LDAP, SOAP, ActiveSync e Z-Push foram
   preservados.
+- O modulo nao fornece UI propria nem API propria; por isso nao ha acao
+  administrativa nova para usuario comum, delegado ou limitado executar.

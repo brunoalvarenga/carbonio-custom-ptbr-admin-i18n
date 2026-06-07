@@ -1,0 +1,16 @@
+{
+  "id": "carbonio-custom-ptbr-admin-i18n",
+  "version": "0.1.0",
+  "title": "PT-BR Admin Console Translation",
+  "status": "functional",
+  "type": "i18n",
+  "targets": [
+    "/opt/zextras/admin/iris/i18n/pt.json",
+    "/opt/zextras/admin/iris/carbonio-admin-ui/i18n/pt.json",
+    "/opt/zextras/admin/iris/src/i18n/pt.json"
+  ],
+  "backupRoot": "/var/backups/carbonio-custom-ptbr-admin-i18n",
+  "statusFile": "/var/lib/carbonio-custom-ptbr-admin-i18n/status.json",
+  "locale": "pt-BR",
+  "updateProtection": true
+}

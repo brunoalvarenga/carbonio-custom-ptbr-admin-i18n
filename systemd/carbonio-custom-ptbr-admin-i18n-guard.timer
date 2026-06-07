@@ -1,0 +1,10 @@
+[Unit]
+Description=Reapply Carbonio Admin PT-BR translation after updates
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=1h
+Unit=carbonio-custom-ptbr-admin-i18n.service
+
+[Install]
+WantedBy=timers.target

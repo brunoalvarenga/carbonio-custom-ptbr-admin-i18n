@@ -1,0 +1,7 @@
+[Unit]
+Description=Carbonio Custom PT-BR Admin i18n reapplier
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/carbonio-custom-ptbr-admin-i18n/repair.sh

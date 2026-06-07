@@ -6,6 +6,11 @@ cd "$ROOT"
 
 python3 -m json.tool translations/pt.json >/dev/null
 bash -n install.sh repair.sh uninstall.sh scripts/package-release.sh scripts/smoke-test.sh
+python3 -m py_compile scripts/generate-ptbr.py scripts/audit-mixed-strings.py
+python3 scripts/audit-mixed-strings.py
+test -s assets/ptbr-visual-i18n.js
+grep -q 'Saturday' assets/ptbr-visual-i18n.js
+grep -q 'Sábado' assets/ptbr-visual-i18n.js
 
 python3 - <<'PY'
 import json
@@ -18,6 +23,9 @@ required = {
     "label.password": "Senha",
     "commons.create_with_there_data": "CRIAR COM ESTES DADOS",
     "label.account_status": "Status da conta",
+    "cos.prevent_user_from_changing_password": "Impedir que o usuário altere a senha",
+    "quarantine.refresh_list": "ATUALIZAR LISTA",
+    "wsc.section.content.description.enableFeature": "Ativar mensagens, chats em grupo, chamadas de vídeo e compartilhamento de arquivos.",
 }
 missing = []
 for key, expected in required.items():

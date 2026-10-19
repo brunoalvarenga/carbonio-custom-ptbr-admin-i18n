@@ -1,0 +1,16 @@
+INSTRUÇÕES PORTÁTEIS — brunoalvarenga/carbonio-custom-ptbr-admin-i18n
+
+Salvas em 19/10/2026 na branch codex/instrucoes-portateis-20261019.
+
+Para obter esta cópia em outro Mac:
+  gh repo clone brunoalvarenga/carbonio-custom-ptbr-admin-i18n -- --branch codex/instrucoes-portateis-20261019
+
+O AGENTS.md da raiz contém as instruções canônicas da base remota quando já existiam, acrescidas da referência às regras gerais. As versões locais diferentes estão em instrucoes/, com origem e hash no inventario.json. Leia as regras da branch de código em que vai atuar antes de escolher uma variante histórica.
+
+Regras globais: copie AGENTS-global.md para ~/.codex/AGENTS.md em uma instalação nova. Se já existir um arquivo nesse destino, compare e incorpore as regras preservando as instruções existentes. O caminho original do Mac antigo é somente uma referência: adapte-o ao usuário e à pasta do novo Mac.
+
+As branches e os commits locais do inventário identificam os checkouts usados no Mac antigo. O salvamento não afirma que commits locais de código ainda não enviados estejam no GitHub. Nos repositórios criados nesta tarefa, só instruções foram publicadas; o código local preexistente não foi incluído.
+
+Não há tokens, senhas, arquivos .env, chaves SSH, bancos, caches ou sessões de navegador neste pacote. Configure os acessos por um meio seguro no novo Mac. Nenhuma automação é iniciada ao clonar.
+
+Nos repositórios existentes, esta branch de preservação não altera main nem executa deploy. Commits de documentação usam [skip ci] para evitar execução de Actions por push.

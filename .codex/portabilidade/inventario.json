@@ -1,0 +1,24 @@
+{
+  "captured_at": "2026-10-19",
+  "repository": "brunoalvarenga/carbonio-custom-ptbr-admin-i18n",
+  "branch": "codex/instrucoes-portateis-20261019",
+  "private": false,
+  "scope": "Instruções de agentes e contexto de retomada. Não é backup integral de código, servidores ou dados.",
+  "local_checkouts": [
+    {
+      "path": "/Users/brunoalvarenga/Documents/Carbonio/custom-modules/carbonio-custom-ptbr-admin-i18n",
+      "remotes": "remote.origin.url https://github.com/brunoalvarenga/carbonio-custom-ptbr-admin-i18n.git",
+      "branch": "main",
+      "head": "fa877dda4a97c363ad98b57b2e72c1df0e40976a"
+    }
+  ],
+  "instruction_copies": [
+    {
+      "source": "/Users/brunoalvarenga/Documents/Carbonio/AGENTS.md",
+      "sha256": "1eb947a34eaff3a1908ace364649055d4bca85536854a21aa0ffa93d37b58377",
+      "inherited": true,
+      "saved_in_private_parent_repository": "https://github.com/brunoalvarenga/carbonio-workspace"
+    }
+  ],
+  "canonical_agents_before_backup_sha256": null
+}
